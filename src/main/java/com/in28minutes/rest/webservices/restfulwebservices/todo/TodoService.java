@@ -57,15 +57,16 @@ public class TodoService {
 		todos.add(todo);
 	}
 	
-	 @Scheduled(fixedRate = 600000)
-	public void CallRestApi() {
-		 String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-	     String url = baseUrl + "/";
-		try {
-			String response = restTemplate.getForObject(url, String.class);
-			System.out.println(response);
-		}catch(Exception e) {
-			
-		}
-	}
+	@Scheduled(fixedRate = 60000)
+public void CallRestApi() {
+    String baseUrl = "https://test-deploy-api-call.onrender.com";
+    String url = baseUrl + "/";
+    try {
+        String response = restTemplate.getForObject(url, String.class);
+        System.out.println(response);
+    } catch (Exception e) {
+        // Handle the exception (e.g., log it)
+    }
+}
+
 }
